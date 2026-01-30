@@ -1,0 +1,28 @@
+GET http://127.0.0.1:3000/user-api/users
+
+### create
+POST http://127.0.0.1:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":100,
+    "name":"vikas",
+    "age":29
+}
+
+### modify 
+PUT http://127.0.0.1:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":100,
+    "name":"kumar",
+    "age":29
+}
+
+### get by id
+GET http://localhost:3000/user-api/users/100
+
+
+### delete by id
+DELETE http://127.0.0.1:3000/user-api/users/100

@@ -1,0 +1,68 @@
+GET http://127.0.0.1:3000/user-api/users
+
+### create
+POST http://127.0.0.1:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":100,
+    "name":"vikas",
+    "age":29
+}
+
+### modify 
+PUT http://127.0.0.1:3000/user-api/users
+Content-Type: application/json
+
+{
+    "id":100,
+    "name":"kumar",
+    "age":29
+}
+
+### get by id
+GET http://localhost:3000/user-api/users/100
+
+
+### delete by id
+DELETE http://127.0.0.1:3000/user-api/users/100
+
+
+###
+GET http://127.0.0.1:3000/product-api/products
+
+###  create a product
+POST http://127.0.0.1:3000/product-api/products
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"laptop",
+    "price":29000,
+    "brand":"dell"
+}
+ 
+
+### get by id
+GET http://localhost:3000/product-api/products-id/1
+
+### get by brand
+GET http://localhost:3000/product-api/products-brand/sony
+
+###  update or modify
+PUT http://127.0.0.1:3000/product-api/products
+Content-Type: application/json
+
+{
+    "productId":1,
+    "name":"TV",
+    "price":99000,
+    "brand":"sony"
+}
+
+
+### delete by id
+DELETE http://localhost:3000/product-api/products/1
+
+
+

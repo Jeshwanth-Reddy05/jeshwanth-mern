@@ -1,0 +1,137 @@
+// shows all databases
+show databases
+
+// creates if not exists
+use practise 
+
+// create collection
+db.createCollection("students")
+
+//see all collections
+show collections
+
+//insert document
+db.students.insertOne({
+  name: "Ravi",
+  age: 21,
+  city: "Hyderabad"
+})
+
+//insert many documents
+db.students.insertMany([
+  { name: "Rahul", age: 22, city: "Chennai" },
+  { name: "Mohan", age: 19, city: "Mumbai" },
+  { name: "Arun", age: 23, city: "Delhi" }
+])
+
+// find one document
+db.students.findOne()
+
+// find many or all 
+db.students.find()
+
+// equals operator 
+db.students.find({ age: { $eq: 21 } })
+
+// greater-than operator
+db.students.find({ age: { $gt: 20 } })
+
+// less-than operator
+db.students.find({ age: { $lt: 22 } })
+
+//not equals operator
+db.students.find({ city: { $ne: "Delhi" } })
+
+//in operator
+db.students.find({ city: { $in: ["Delhi", "Mumbai"] } })
+
+// AND operator
+db.students.find({ $and: [{ age: { $gt: 20 } },{ city: "Hyderabad" }]})
+    
+// OR operator
+db.students.find({$or: [{ age: 19 },{ age: 23 }]})
+
+// update one document
+db.students.updateOne({ name: "Ravi" },{ $set: { age: 25 } })
+
+// update many document
+db.students.updateMany({ city: "Mumbai" },{ $set: { city: "Pune" }})
+
+// delete document
+db.students.deleteOne({ name: "Arun" })
+
+//delete many document
+db.students.deleteOne({ name: "Arun" })
+
+//insert one
+db.students.insertOne({
+  name: "Kiran",
+  address: {
+    city: "Hyderabad",pincode: 500001}
+})
+
+// find by city
+db.students.find({ "address.city": "Hyderabad" })
+
+
+// update 
+db.students.updateOne(
+  { name: "Kiran" },
+  { $set: { "address.pincode": 500002 } }
+)
+
+//insert
+db.students.insertOne({
+  name: "rahul",
+  skills: ["JS", "MongoDB"]
+})
+
+//find by skills
+db.students.find({ skills: "JS" })
+db.students.find({ skills: { $all: ["JS", "MongoDB"] } })
+
+//update one record use (push)
+db.students.updateOne(
+  { name: "Rahul" },
+  { $push: { skills: "NodeJS" } }
+)
+
+db.students.updateOne(
+  { name: "rahul" },
+  { $push: { skills: { $each: ["React", "Express"] } } }
+)
+
+
+//pop
+db.students.updateOne(
+  { name: "Rahul" },
+  { $pop: { skills: 1 } }
+)
+
+//pull
+db.students.updateOne(
+  { name: "rahul" },
+  { $pullAll: { skills: ["React", "Express"] } }
+)
+
+//insert one document
+db.students.insertOne({
+  name: "rakesh",
+  marks: [
+    { subject: "Math", score: 80 },
+    { subject: "Science", score: 90 }
+  ]
+})
+
+//update
+db.students.insertOne({
+  name: "rakesh",
+  marks: [
+    { subject: "Math", score: 80 },
+    { subject: "Science", score: 90 }
+  ]
+})
+
+
+let x = [{a:10},{a:20}]
+x[0].a  

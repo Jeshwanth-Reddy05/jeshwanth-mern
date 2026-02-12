@@ -20,11 +20,3 @@
 
 
 
-
-updateone 
-- Returns: an UpdateResult object.
-- Contains:
-- acknowledged: whether the operation was acknowledged.
-- matchedCount: how many documents matched the filter.
-- modifiedCount: how many documents were actually modified.
-- upsertedId: the _id of the document if an upsert occurred.

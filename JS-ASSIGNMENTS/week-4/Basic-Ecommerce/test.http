@@ -1,0 +1,25 @@
+##
+POST http://localhost:5000/product-api/products
+Content-Type: application/json
+
+{
+    "productname":"camera",
+    "price":42000,
+    "brand":"nikon"
+}
+### create user
+POST http://localhost:5000/user-api/users
+Content-Type: application/json
+
+{
+    "name":"rahul",
+    "email":"rahul@gmail.com",
+    "password":"",
+    "cart":[]
+}
+
+### request to add product to cart of the user document
+PUT http://localhost:5000/user-api/user-cart/user-id/69817f47cc77b5d1515d7d52/product-id/698069593a5096478c77384e
+
+### read user by id
+GET http://localhost:5000/user-api/users/69817f47cc77b5d1515d7d52

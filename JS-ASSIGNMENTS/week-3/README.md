@@ -1,40 +1,32 @@
-# Week 3: REST APIs, MongoDB & Database Integration 🔌
+# Week 3: REST APIs, MongoDB & Database Integration
 
-This week marks the transition from frontend JavaScript scripting to **Backend Software Engineering**. The focus is on setting up production-ready web servers, handling asynchronous network requests, routing application pathways, writing database schemas, and performing structured queries on MongoDB.
+This week marks the transition from frontend JavaScript scripting to Backend Software Engineering. The focus is on setting up production-ready web servers, handling asynchronous network requests, routing application pathways, writing database schemas, and performing structured queries on MongoDB.
 
 ---
 
-## 📂 Folder Roadmap
+## Folder Roadmap
 
 | Subdirectory | Core Objective | Key Files |
 | :--- | :--- | :--- |
-| **`BackendDemo`** | In-Memory REST API Server with custom Express routing | `server.js`, `APIs/user-api.js`, `APIs/product-api.js` |
-| **`BackendDemoUsingDB`** | Mongoose DB integration with structured models | `server.js`, `models/userModel.js`, `APIs/UserApi.js` |
-| **`MongoDB-Commands`** | Core MongoDB CRUD, logical operators, and array update sheets | `mongoDB-commands.txt` |
+| **BackendDemo** | In-Memory REST API Server with custom Express routing | `server.js`, `APIs/user-api.js`, `APIs/product-api.js` |
+| **BackendDemoUsingDB** | Mongoose DB integration with structured models | `server.js`, `models/userModel.js`, `APIs/UserApi.js` |
+| **MongoDB-Commands** | Core MongoDB CRUD, logical operators, and array update sheets | `mongoDB-commands.txt` |
 
 ---
 
-## 💡 System Architecture
+## System Architecture
 
-```mermaid
-flowchart TD
-    Client[Client Browser / REST Client] <-->|HTTP Requests / Responses| Express[Express Web Server]
-    subgraph Express.js App
-        Express <--> Router[Express Router]
-        Router <--> Middleware[JSON Parsing / Error Handling]
-    end
-    subgraph Storage Tier
-        Middleware <-->|In-Memory Arrays| Mem[BackendDemo Stack]
-        Middleware <-->|Mongoose ODM| MongoDb[MongoDB Server]
-    end
-```
+1. Client (REST Client / Postman) sends HTTP requests.
+2. Express Web Server intercepts the requests and parses JSON.
+3. Routers map the routes to the handler controllers.
+4. Data is stored either in memory (BackendDemo) or in a MongoDB Database using Mongoose (BackendDemoUsingDB).
 
 ---
 
-## 🛠️ Module Breakdowns
+## Module Breakdowns
 
-### 1. In-Memory Express Servers (`BackendDemo`)
-* Defines REST endpoints supporting all HTTP verbs: **GET**, **POST**, **PUT**, and **DELETE**.
+### 1. In-Memory Express Servers (BackendDemo)
+* Defines REST endpoints supporting all HTTP verbs: GET, POST, PUT, and DELETE.
 * Uses `express.json()` as a global body-parsing middleware.
 * Divides application routes cleanly using `express.Router()` scopes:
   - `/user-api` handles user resource allocations.
@@ -42,7 +34,7 @@ flowchart TD
 
 ---
 
-### 2. MongoDB Shell Query Playbook (`MongoDB-Commands`)
+### 2. MongoDB Shell Query Playbook (MongoDB-Commands)
 Contains reference commands detailing operations inside the MongoDB Shell (`mongosh`):
 * **CRUD Basics**: `insertOne()`, `insertMany()`, `find()`, `updateOne()`, `deleteOne()`.
 * **Comparison Operators**: `$eq`, `$gt`, `$lt`, `$ne`, `$in`.
@@ -54,8 +46,8 @@ Contains reference commands detailing operations inside the MongoDB Shell (`mong
 
 ---
 
-### 3. Database Integrated Servers (`BackendDemoUsingDB`)
-Connects the API routes directly to a MongoDB database using **Mongoose ODM** (Object Document Mapper):
+### 3. Database Integrated Servers (BackendDemoUsingDB)
+Connects the API routes directly to a MongoDB database using Mongoose ODM (Object Document Mapper):
 * **Db Lifecycle Handling**: Connects securely before starting the server listener:
   ```javascript
   async function connectDB() {
@@ -67,8 +59,8 @@ Connects the API routes directly to a MongoDB database using **Mongoose ODM** (O
     }
   }
   ```
-* **Mongoose Schema & Models**: Maps logical blueprints defining fields, types, and constraints (e.g. `String`, `Number`, validations) to direct database records.
-* **Robust Error Handling**: Utilizes an Express error-catching middleware to gracefully return `500` status codes during query failures:
+* **Mongoose Schema & Models**: Maps logical blueprints defining fields, types, and constraints (e.g. String, Number, validations) to direct database records.
+* **Robust Error Handling**: Utilizes an Express error-catching middleware to gracefully return 500 status codes during query failures:
   ```javascript
   app.use((err, req, res, next) => {
     res.status(500).json({ message: "error", reason: err.message });
@@ -77,7 +69,7 @@ Connects the API routes directly to a MongoDB database using **Mongoose ODM** (O
 
 ---
 
-## ⚡ API Testing & Execution Guide
+## API Testing & Execution Guide
 
 Both backend folders include a `test.http` file containing structural test templates suitable for the VS Code REST Client extension.
 
@@ -93,7 +85,7 @@ Both backend folders include a `test.http` file containing structural test templ
    ```
 
 ### Running BackendDemoUsingDB (Port 4000)
-1. Ensure your local **MongoDB Server** is running on `port 27017`.
+1. Ensure your local MongoDB Server is running on port 27017.
 2. Navigate and install dependencies:
    ```bash
    cd JS-ASSIGNMENTS/week-3/BackendDemoUsingDB
@@ -104,7 +96,7 @@ Both backend folders include a `test.http` file containing structural test templ
    node server.js
    ```
 
-### Example Test Requests (`test.http`)
+### Example Test Requests (test.http)
 ```http
 ### Get All Products
 GET http://localhost:4000/product-api/products
